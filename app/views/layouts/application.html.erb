@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tunder</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+	
+	<header>
+		<%= link_to "Cerrar Sesion", destroy_user_session_path, method: :delete if user_signed_in? %>
+		<%= image_tag(Gravatar.new("reddrum7@gmail.com").image_url) %>
+		<h1>Tunder</h1>
+	</header>
+
+	<div class="container">
+
+	<% flash.each do | name, err |  %>
+		<%= content_tag :div, err, class: name %>
+		<% end %>
+		<%= yield %>
+		
+	</div>
+
+	<footer>
+		Habla sobre tunder en tweeter
+	</footer>
+
+</body>
+</html>
